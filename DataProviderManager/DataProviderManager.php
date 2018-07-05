@@ -60,6 +60,7 @@ class DataProviderManager implements DataProviderInterface
                 ->expiresAt(
                     (new \DateTime())->modify('+1 day')
                 );
+            return $result;
         }
         catch (InvalidRequestException $e) {
             $this->logger->critical("Invalid request", [
@@ -75,8 +76,6 @@ class DataProviderManager implements DataProviderInterface
             ]);
             throw $e;
         }
-
-        return $result;
     }
 
     /**
